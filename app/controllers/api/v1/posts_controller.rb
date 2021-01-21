@@ -1,6 +1,8 @@
 module Api
   module V1
     class PostsController < ApplicationController
+      protect_from_forgery with: :null_session
+
       def index
         posts = Post.all
 
@@ -14,6 +16,7 @@ module Api
       end
 
       def create
+        puts "create was called"
         post = Post.new(post_params)
 
         if post.save
