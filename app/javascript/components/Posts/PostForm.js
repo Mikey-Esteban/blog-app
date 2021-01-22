@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router'
 import styled from 'styled-components'
 import Navbar from '../Navbar'
 
@@ -64,6 +65,7 @@ const Field = styled.div`
 const PostForm = () => {
 
   const [ post, setPost ] = useState({})
+  const [ redirect, setRedirect ] = useState(false)
 
   const handleChange = e => {
     setPost({...post, [e.target.name]:e.target.value})
@@ -72,13 +74,17 @@ const PostForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    console.log('post: ', post)
     // use axios to make a post request to /api/v1/posts
     axios.post('/api/v1/posts', {post})
       .then( resp => {
-        debugger
+        setPost({})
+        setRedirect(true)
       })
       .catch( resp => console.log(resp) )
+  }
+
+  if (redirect) {
+  return <Redirect to='/'/>;
   }
 
   return (
