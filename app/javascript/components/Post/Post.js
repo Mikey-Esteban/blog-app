@@ -30,7 +30,8 @@ const Post = (props) => {
   }, [])
 
   const handleChange = e => {
-    setComment(...comment, [e.target.name]:e.target.value)
+    console.log(e.target.value)
+    setComment({...comment, [e.target.name]:e.target.value})
   }
 
   const handleSubmit = e => {
