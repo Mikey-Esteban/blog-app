@@ -19,7 +19,6 @@ const Post = (props) => {
   const [ loaded, setLoaded ] = useState(false)
 
   useEffect( () => {
-    // make api call to grab post
     const slug = props.match.params.slug
     axios.get(`/api/v1/posts/${slug}`)
       .then( resp => {
@@ -30,12 +29,24 @@ const Post = (props) => {
   }, [])
 
   const handleChange = e => {
-    console.log(e.target.value)
     setComment({...comment, [e.target.name]:e.target.value})
   }
 
   const handleSubmit = e => {
     e.preventDefault()
+
+    const csrfToken = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+
+    const post_id = post.data.id
+
+    axios.post('/api/v1/comments', {comment, post_id})
+      .then( resp => {
+        const included = [...post.included, resp.data.data]
+        setPost({...post, included})
+        setComment({})
+      })
+      .catch( resp => console.log(resp))
   }
 
   return (

@@ -32,7 +32,6 @@ const Body = styled.div`
 `
 
 const Main = (props) => {
-  console.log('Main props:', props)
 
   const [ paragraphs, setParagraphs ] = useState([])
 

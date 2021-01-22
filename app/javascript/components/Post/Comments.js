@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Title = styled.div `
@@ -18,15 +18,9 @@ const Body = styled.div`
 
 const Comments = (props) => {
 
-  const [ comments, setComments ] = useState([])
-
-  useEffect( () => {
-    const comments_array = props.attributes
-    const comments = comments_array.map( item => {
-      return <p key={item.id}>{item.attributes.text}</p>
-    })
-    setComments(comments)
-  }, [comments.length])
+  const comments = props.attributes.map( item => {
+    return <p key={item.id}>{item.attributes.text}</p>
+  })
 
   return (
     <div>

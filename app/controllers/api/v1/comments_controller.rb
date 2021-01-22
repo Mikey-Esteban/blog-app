@@ -2,9 +2,9 @@ module Api
   module V1
     class CommentsController < ApplicationController
       protect_from_forgery with: :null_session
-      
+
       def create
-        comment = Comment.new(comment_params)
+        comment = post.comments.new(comment_params)
 
         if comment.save
           render json: CommentSerializer.new(comment).serializable_hash.to_json
@@ -24,6 +24,10 @@ module Api
       end
 
       private
+
+      def post
+        @post ||= Post.find(params[:post_id])
+      end
 
       def comment_params
         params.require(:comment).permit(:text, :post_id)
