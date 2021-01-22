@@ -39,7 +39,7 @@ const Posts = () => {
   }, [posts.length])
 
   const list = posts.map( item => {
-    return( <Post key={item.attributes.title} attributes={item.attributes} /> )
+    return( <Post key={item.id} attributes={item.attributes} /> )
   })
 
   return (
