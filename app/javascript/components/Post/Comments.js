@@ -18,9 +18,13 @@ const Body = styled.div`
 
 const Comments = (props) => {
 
-  const comments = props.attributes.map( item => {
+  let comments = props.attributes.map( item => {
     return <p key={item.id}>{item.attributes.text}</p>
   })
+
+  if (comments.length == 0) {
+    comments = <p>Be the first to comment!</p>
+  }
 
   return (
     <div>

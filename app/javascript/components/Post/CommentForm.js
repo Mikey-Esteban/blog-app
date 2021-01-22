@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   border: 1px solid #efefef;
   border-radius: 4px;
   height: 250px;
+  min-width: 400px;
   margin: 0 auto;
 
   color: #14213d;   /* dark blue */
