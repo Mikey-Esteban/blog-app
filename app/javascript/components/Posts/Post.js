@@ -58,7 +58,7 @@ const LinkWrapper = styled.div`
 
 const Post = (props) => {
 
-  const teaser = `${props.attributes.body.substring(0, 75)}...`
+  const teaser = `${props.attributes.body.substring(0, 65)}...`
 
   return (
     <Wrapper>

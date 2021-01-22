@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import Navbar from '../Navbar'
 import Main from './Main'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
@@ -50,8 +51,12 @@ const Post = (props) => {
   }
 
   return (
-    <div className="wrapper">
-      <div>This is the Posts#show view for our app.</div>
+    <Fragment>
+      <Navbar
+        text={'This is the Posts#show view for our app.'}
+        linkTo={'/'}
+        linkText={'Home'}
+      />
       {
         loaded &&
         <Fragment>
@@ -67,7 +72,7 @@ const Post = (props) => {
           </CommentsWrapper>
         </Fragment>
       }
-    </div>
+    </Fragment>
   )
 }
 

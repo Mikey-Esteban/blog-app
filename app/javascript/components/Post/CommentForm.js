@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   border: 1px solid #efefef;
   border-radius: 4px;
-  min-height: 250px;
+  height: 250px;
   margin: 0 auto;
 
   color: #14213d;   /* dark blue */
