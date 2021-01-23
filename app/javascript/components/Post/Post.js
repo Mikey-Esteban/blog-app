@@ -52,14 +52,16 @@ const Post = (props) => {
 
   return (
     <Fragment>
-      <Navbar
-        text={'This is the Posts#show view for our app.'}
-        linkTo={'/'}
-        linkText={'Home'}
-      />
       {
         loaded &&
         <Fragment>
+          <Navbar
+            text={'This is the Posts#show view for our app.'}
+            linkTo={'/'}
+            linkText={'Home'}
+            edit={true}
+            attributes={post.data.attributes}
+          />
           <Main attributes={post.data.attributes} />
           <CommentsWrapper>
             <div className="column"></div>

@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 `
 
 const LinkWrapper = styled.div`
+
   a {
     border: 1px solid #14213d;  /* dark blue */
     border-radius: 4px;
@@ -34,12 +35,20 @@ const LinkWrapper = styled.div`
 
 const Navbar = (props) => {
   const { text, linkTo, linkText } = props
-  
+
+  if (props.edit) {
+    console.log('need to add a edit button!');
+    console.log(props);
+  }
   return (
     <Wrapper>
       <span>{text}</span>
       <LinkWrapper>
         <Link to={linkTo}>{linkText}</Link>
+      {
+        props.edit &&
+          <Link to={`/posts/${props.attributes.slug}/edit`}>Edit Post</Link>
+      }
       </LinkWrapper>
     </Wrapper>
   )
