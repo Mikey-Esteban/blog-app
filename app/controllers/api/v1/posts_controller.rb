@@ -4,7 +4,7 @@ module Api
       protect_from_forgery with: :null_session
 
       def index
-        posts = Post.all
+        posts = Post.all.order(created_at: :desc)
 
         render json: PostSerializer.new(posts, options).serializable_hash.to_json
       end
