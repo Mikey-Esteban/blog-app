@@ -29,7 +29,7 @@ module Api
       def update
         post = Post.find_by(slug: params[:slug])
 
-        if post.update
+        if post.update(post_params)  # need to add params to update
           render json: PostSerializer.new(post, options).serializable_hash.to_json
         else
           render json: { error: post.errors.messages }, status: 422
